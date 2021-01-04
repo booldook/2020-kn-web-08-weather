@@ -1,3 +1,5 @@
+// 웹사이트 주소체계: https://nodejs.org/dist/latest-v15.x/docs/api/url.html
+
 // openweathermap: 02efdd64bdc14b279bc91d9247db4722 (본인거로)
 // kakao: af4cf501855e85f0b321e3766472a99d (본인거로)
 
