@@ -11,7 +11,7 @@
 	<script src="../js/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-	<div class="wrapper" style="background-image: url(../img/01d-bg.jpg);">
+	<div class="all-wrapper" style="background-image: url(../img/01d-bg.jpg);">
 		<div class="title-wrapper">
 			<div class="title-wrap">
 				<div class="version">v1.0</div>
@@ -21,10 +21,16 @@
 				<img class="icon mw-100" src="../img/cloudy.png" alt="아이콘">
 			</div>
 		</div>
-		<div class="cont-wrapper">
+		<div class="cont-wrapper wrapper">
+			<div class="map-wrap" id="map">
 
+			</div>
+			<div class="weather-wrap">
+
+			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=af4cf501855e85f0b321e3766472a99d"></script>
 	<script src="../js/index.js"></script>
 </body>
 </html>

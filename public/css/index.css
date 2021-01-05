@@ -2,12 +2,16 @@
 
 html, body {font-family: 'Sunflower', sans-serif;}
 
+.wrapper {max-width: 1200px; margin: auto;}
+.all-wrapper {width: 100%; height: 100vh; position: relative; background-repeat: no-repeat; background-position: center; background-size: cover; padding: 3%; color: #f9f9f9;}
 
-.wrapper {width: 100%; height: 100vh; position: relative; background-repeat: no-repeat; background-position: center; background-size: cover; padding: 3%; color: #f9f9f9;}
-
-.title-wrapper {display: flex; justify-content: center; align-items: center;}
+.title-wrapper {display: flex; justify-content: center; align-items: center; margin-bottom: 2em;}
 .title-wrapper .version {text-align: right; transform: translate(15px, 2px);}
 .title-wrapper .img-wrap {transform: translate(10px, -5px);}
+
+.cont-wrapper {display: flex; justify-content: space-between;}
+.cont-wrapper > .map-wrap {flex: 400px 0 0; height: 600px; border: 1px solid red;}
+.cont-wrapper > .weather-wrap {flex: 100% 0 1; margin-left: 5%; border: 1px solid red;}
 
 
 @media screen and (max-width: 1199px) {
@@ -15,7 +19,9 @@ html, body {font-family: 'Sunflower', sans-serif;}
 }
 
 @media screen and (max-width: 991px) {
-	.wrapper {padding: 5% 3%;}
+	.all-wrapper {padding: 5% 3%;}
+	.cont-wrapper > .map-wrap {display: none;}
+	.cont-wrapper > .weather-wrap {margin-left: 0;}
 }
 
 @media screen and (max-width: 767px) {
@@ -23,7 +29,7 @@ html, body {font-family: 'Sunflower', sans-serif;}
 }
 
 @media screen and (max-width: 575px) {
-	.wrapper {padding: 8% 3%;}
+	.all-wrapper {padding: 8% 3%;}
 	.title-wrapper .title {font-size: 2em;}
 	.title-wrapper .img-wrap {width: 80px; transform: translate(8px, -3px);}
 }

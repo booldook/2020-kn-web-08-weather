@@ -26,6 +26,7 @@ $("#bt").click(function(){
 
 
 /****************** 전역설정 *******************/
+var map;
 var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 var params = {
 	appid: '02efdd64bdc14b279bc91d9247db4722',
@@ -36,6 +37,9 @@ var params = {
 
 /****************** 이벤트등록 *******************/
 navigator.geolocation.getCurrentPosition(onGetPosition, onGetPositionError);
+
+mapInit();
+
 
 
 /****************** 이벤트콜백 *******************/
@@ -59,6 +63,15 @@ function getWeather(lat, lon) {
 	params.lat = lat;
 	params.lon = lon;
 	$.get(weatherUrl, params, onGetWeather);
+}
+
+function mapInit() {
+	var mapContainer = document.getElementById('map'),
+	mapOption = { 
+		center: new kakao.maps.LatLng(35.8, 127.8),
+		level: 13
+	};
+	map = new kakao.maps.Map(mapContainer, mapOption); 
 }
 
 function updateBg(icon) {
@@ -107,5 +120,5 @@ function updateBg(icon) {
 			bg = '50n-bg.jpg';
 			break;
 	}
-	$(".wrapper").css('background-image', 'url(../img/'+bg+')');
+	$(".all-wrapper").css('background-image', 'url(../img/'+bg+')');
 }
