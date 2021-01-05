@@ -66,7 +66,17 @@ function onGetCity(r) {
 /****************** 사용자함수 *******************/
 function createMarker(v) {
 	for(var i in v) {
-		var content = '<div class ="label" style="background-color: #000">'+v[i].name+'</div>';
+		var content = '';
+		content += '<div class="popper">';
+		content += '<div class="img-wrap">';
+		content += '<img src="http://openweathermap.org/img/wn/02d.png" class="mw-100">';
+		content += '</div>';
+		content += '<div class="cont-wrap">';
+		content += '<div class="name">'+v[i].name+'</div>';
+		content += '<div class="temp">-3.57도</div>';
+		content += '</div>';
+		content += '<i class="fa fa-caret-down"></i>';
+		content += '</div>';
 		var position = new kakao.maps.LatLng(v[i].lat, v[i].lon); 
 		var customOverlay = new kakao.maps.CustomOverlay({
 			position: position,
