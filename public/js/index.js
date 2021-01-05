@@ -25,6 +25,8 @@ $("#bt").click(function(){
 // 7days: https://api.openweathermap.org/data/2.5/onecall?lat=38&lon=127&appid=02efdd64bdc14b279bc91d9247db4722&units=metric&exclude=minutely,hourly
 
 
+// http://openweathermap.org/img/wn/02d.png
+
 /****************** 전역설정 *******************/
 var map;
 var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
@@ -57,8 +59,23 @@ function onGetWeather(r) {
 	updateBg(r.weather[0].icon);
 }
 
+function onGetCity(r) {
+	createMarker(r.cities);
+}
 
 /****************** 사용자함수 *******************/
+function createMarker(v) {
+	for(var i in v) {
+		var content = '<div class ="label" style="background-color: #000">'+v[i].name+'</div>';
+		var position = new kakao.maps.LatLng(v[i].lat, v[i].lon); 
+		var customOverlay = new kakao.maps.CustomOverlay({
+			position: position,
+			content: content,
+		});
+		customOverlay.setMap(map);
+	}
+}
+
 function getWeather(lat, lon) {
 	params.lat = lat;
 	params.lon = lon;
@@ -66,12 +83,15 @@ function getWeather(lat, lon) {
 }
 
 function mapInit() {
-	var mapContainer = document.getElementById('map'),
-	mapOption = { 
+	var mapOption = { 
 		center: new kakao.maps.LatLng(35.8, 127.8),
 		level: 13
 	};
-	map = new kakao.maps.Map(mapContainer, mapOption); 
+	map = new kakao.maps.Map($('#map')[0], mapOption);
+	map.setDraggable(false);
+	map.setZoomable(false);
+	
+	$.get('../json/city.json', onGetCity);
 }
 
 function updateBg(icon) {
