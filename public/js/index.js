@@ -67,7 +67,7 @@ function onGetCity(r) {
 function createMarker(v) {
 	for(var i in v) {
 		var content = '';
-		content += '<div class="popper">';
+		content += '<div class="popper '+v[i].class+'">';
 		content += '<div class="img-wrap">';
 		content += '<img src="http://openweathermap.org/img/wn/02d.png" class="mw-100">';
 		content += '</div>';
@@ -81,6 +81,8 @@ function createMarker(v) {
 		var customOverlay = new kakao.maps.CustomOverlay({
 			position: position,
 			content: content,
+			xAnchor: 0.3,
+			yAnchor: 0.3
 		});
 		customOverlay.setMap(map);
 	}
@@ -94,7 +96,7 @@ function getWeather(lat, lon) {
 
 function mapInit() {
 	var mapOption = { 
-		center: new kakao.maps.LatLng(35.8, 127.8),
+		center: new kakao.maps.LatLng(35.8, 127.7),
 		level: 13
 	};
 	map = new kakao.maps.Map($('#map')[0], mapOption);
