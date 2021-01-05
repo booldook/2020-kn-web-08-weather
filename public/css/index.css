@@ -4,7 +4,7 @@
 html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .wrapper {max-width: 1200px; margin: auto;}
 
-.popper {display: flex; align-items: center; padding-right: 4px;  position: absolute; background-color: #19a19b; color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.875em; top: -50px; }
+.popper {display: flex; align-items: center; padding-right: 4px;  position: absolute; background-color: #19a19b; color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.875em; top: -53px; }
 .popper.lt {left: 0;}
 .popper.ct {left: -40px;}
 .popper.rt {left: -80px;}
