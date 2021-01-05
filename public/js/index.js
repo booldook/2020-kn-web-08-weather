@@ -61,6 +61,7 @@ function onGetWeather(r) {
 
 function onGetCity(r) {
 	createMarker(r.cities);
+	// 변경할 사항은 위의 createMarker를 실행하지 않고, openweathermap 통신으로 날씨정보를 받아오는게 완료되면 그때 그 정보로 marker를 만든다.
 }
 
 /****************** 사용자함수 *******************/
@@ -80,9 +81,7 @@ function createMarker(v) {
 		var position = new kakao.maps.LatLng(v[i].lat, v[i].lon); 
 		var customOverlay = new kakao.maps.CustomOverlay({
 			position: position,
-			content: content,
-			xAnchor: 0.3,
-			yAnchor: 0.3
+			content: content
 		});
 		customOverlay.setMap(map);
 	}
@@ -97,7 +96,7 @@ function getWeather(lat, lon) {
 function mapInit() {
 	var mapOption = { 
 		center: new kakao.maps.LatLng(35.8, 127.7),
-		level: 13
+		level: 13,
 	};
 	map = new kakao.maps.Map($('#map')[0], mapOption);
 	map.setDraggable(false);
