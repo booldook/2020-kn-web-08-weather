@@ -77,33 +77,33 @@ function onGetCity(r) {
 }
 
 function onCreateMarker(r) {
-	for(var i in cities) {
+	/* for(var i in cities) {
 		if(cities[i].id === r.id) {
 			r.cityName = cities[i].name;
 			break;
 		}
-	}
-	// cities.filter();
-	console.log(r);
-	/* for(var i in v) {
-		var content = '';
-		content += '<div class="popper '+v[i].class+'">';
-		content += '<div class="img-wrap">';
-		content += '<img src="http://openweathermap.org/img/wn/02d.png" class="mw-100">';
-		content += '</div>';
-		content += '<div class="cont-wrap">';
-		content += '<div class="name">'+v[i].name+'</div>';
-		content += '<div class="temp">-3.57도</div>';
-		content += '</div>';
-		content += '<i class="fa fa-caret-down"></i>';
-		content += '</div>';
-		var position = new kakao.maps.LatLng(v[i].lat, v[i].lon); 
-		var customOverlay = new kakao.maps.CustomOverlay({
-			position: position,
-			content: content
-		});
-		customOverlay.setMap(map);
 	} */
+	var city = cities.filter(function(v){
+		return v.id === r.id;
+	});
+	console.log(city[0], r);
+	var content = '';
+	content += '<div class="popper '+city[0].class+'">';
+	content += '<div class="img-wrap">';
+	content += '<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
+	content += '</div>';
+	content += '<div class="cont-wrap">';
+	content += '<div class="name">'+city[0].name+'</div>';
+	content += '<div class="temp">'+r.main.temp+'도</div>';
+	content += '</div>';
+	content += '<i class="fa fa-caret-down"></i>';
+	content += '</div>';
+	var position = new kakao.maps.LatLng(r.coord.lat, r.coord.lon); 
+	var customOverlay = new kakao.maps.CustomOverlay({
+		position: position,
+		content: content
+	});
+	customOverlay.setMap(map);
 }
 
 

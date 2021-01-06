@@ -4,16 +4,16 @@
 html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .wrapper {max-width: 1200px; margin: auto;}
 
-.popper {display: flex; align-items: center; padding-right: 4px;  position: absolute; background-color: #19a19b; color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.875em; top: -53px; }
+.popper {display: flex; align-items: center; padding-right: 3px;  position: absolute; background-color: rgba(9, 57, 88, 0.9); color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.75em; top: -48px; }
 .popper.lt {left: 0;}
-.popper.ct {left: -40px;}
-.popper.rt {left: -80px;}
+.popper.ct {left: -30px;}
+.popper.rt {left: -60px;}
 .popper.lt > .fa {left: 6px;}
 .popper.ct > .fa {left: calc(50% - 5px);}
 .popper.rt > .fa {right: 6px;}
-.popper .img-wrap {width: 40px;}
+.popper .img-wrap {width: 35px;}
 .popper .name {margin-bottom: 2px;}
-.popper .fa {color: #19a19b; position: absolute; bottom: -10px; font-size: 1.25em;}
+.popper .fa {color: rgba(9, 57, 88, 0.9); position: absolute; bottom: -10px; font-size: 1.5em;}
 
 /******** 전체 *********/
 .all-wrapper {width: 100%; height: 100vh; position: relative; background-repeat: no-repeat; background-position: center; background-size: cover; padding: 3%; color: #f9f9f9;}
