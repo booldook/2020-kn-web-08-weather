@@ -117,7 +117,13 @@ function onCreateMarker(r) {
 	content += '</div></div></div>';
 	$('.city-wrap .swiper-wrapper').append(content);
 	var swiper = new Swiper('.city-wrap', {
-		
+		slidesPerView: 2,
+		spaceBetween: 10,
+		loop: true,
+		breakpoints: {
+			576: { slidesPerView: 3 },
+			768: { slidesPerView: 4 },
+		}
 	});
 }
 
