@@ -30,6 +30,7 @@ $("#bt").click(function(){
 /****************** 전역설정 *******************/
 var map;
 var cities;
+var cityCnt = 0;	// onCreateMarker에서 갯수를 센다.
 var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 var params = {
 	appid: '02efdd64bdc14b279bc91d9247db4722',
@@ -83,10 +84,10 @@ function onCreateMarker(r) {
 			break;
 		}
 	} */
+	cityCnt++;
 	var city = cities.filter(function(v){
 		return v.id === r.id;
 	});
-	console.log(city[0], r);
 	var content = '';
 	content += '<div class="popper '+city[0].class+'">';
 	content += '<div class="img-wrap">';
@@ -116,15 +117,21 @@ function onCreateMarker(r) {
 	content += '<div class="temp">체감&nbsp;&nbsp; '+r.main.feels_like+'도</div>';
 	content += '</div></div></div>';
 	$('.city-wrap .swiper-wrapper').append(content);
-	var swiper = new Swiper('.city-wrap', {
-		slidesPerView: 2,
-		spaceBetween: 10,
-		loop: true,
-		breakpoints: {
-			576: { slidesPerView: 3 },
-			768: { slidesPerView: 4 },
-		}
-	});
+	if(cityCnt == cities.length) {
+		var swiper = new Swiper('.city-wrap .swiper-container', {
+			slidesPerView: 2,
+			spaceBetween: 10,
+			loop: true,
+			navigation: {
+        nextEl: '.city-wrap .bt-next',
+        prevEl: '.city-wrap .bt-prev',
+      },
+			breakpoints: {
+				576: { slidesPerView: 3 },
+				768: { slidesPerView: 4 },
+			}
+		});
+	}
 }
 
 
