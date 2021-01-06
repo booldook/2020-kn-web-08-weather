@@ -104,6 +104,21 @@ function onCreateMarker(r) {
 		content: content
 	});
 	customOverlay.setMap(map);
+
+	content  = '<div class="city swiper-slide">';
+	content += '<div class="name">'+city[0].name+'</div>';
+	content += '<div class="content">';
+	content += '<div class="img-wrap">';
+	content += '<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
+	content += '</div>';
+	content += '<div class="cont-wrap">';
+	content += '<div class="temp">온도&nbsp;&nbsp; '+r.main.temp+'도</div>';
+	content += '<div class="temp">체감&nbsp;&nbsp; '+r.main.feels_like+'도</div>';
+	content += '</div></div></div>';
+	$('.city-wrap .swiper-wrapper').append(content);
+	var swiper = new Swiper('.city-wrap', {
+		
+	});
 }
 
 
