@@ -29,22 +29,27 @@ $("#bt").click(function(){
 
 /****************** 전역설정 *******************/
 var map;
+var cities;
 var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 var params = {
 	appid: '02efdd64bdc14b279bc91d9247db4722',
 	units: 'metric',
-	exclude: 'minutely,hourly'
+	lang: 'kr'
 }
 
 
 /****************** 이벤트등록 *******************/
 navigator.geolocation.getCurrentPosition(onGetPosition, onGetPositionError);
-
 mapInit();
 
 
 
+
 /****************** 이벤트콜백 *******************/
+function onResize() {
+	map.setCenter(new kakao.maps.LatLng(35.8, 127.7));
+}
+
 function onGetPosition(r) {
 	getWeather(r.coords.latitude, r.coords.longitude);
 }
@@ -60,13 +65,27 @@ function onGetWeather(r) {
 }
 
 function onGetCity(r) {
-	createMarker(r.cities);
+	//createMarker(r.cities);
 	// 변경할 사항은 위의 createMarker를 실행하지 않고, openweathermap 통신으로 날씨정보를 받아오는게 완료되면 그때 그 정보로 marker를 만든다.
+	cities = r.cities;
+	for(var i in cities) {
+		params.lat = '';
+		params.lon = '';
+		params.id = cities[i].id;
+		$.get(weatherUrl, params, onCreateMarker);
+	}
 }
 
-/****************** 사용자함수 *******************/
-function createMarker(v) {
-	for(var i in v) {
+function onCreateMarker(r) {
+	for(var i in cities) {
+		if(cities[i].id === r.id) {
+			r.cityName = cities[i].name;
+			break;
+		}
+	}
+	// cities.filter();
+	console.log(r);
+	/* for(var i in v) {
 		var content = '';
 		content += '<div class="popper '+v[i].class+'">';
 		content += '<div class="img-wrap">';
@@ -84,10 +103,15 @@ function createMarker(v) {
 			content: content
 		});
 		customOverlay.setMap(map);
-	}
+	} */
 }
 
+
+
+/****************** 사용자함수 *******************/
+
 function getWeather(lat, lon) {
+	params.id = '';
 	params.lat = lat;
 	params.lon = lon;
 	$.get(weatherUrl, params, onGetWeather);
@@ -97,11 +121,14 @@ function mapInit() {
 	var mapOption = { 
 		center: new kakao.maps.LatLng(35.8, 127.7),
 		level: 13,
+		draggable: false,
+		zoomable: false
 	};
 	map = new kakao.maps.Map($('#map')[0], mapOption);
-	map.setDraggable(false);
-	map.setZoomable(false);
+	// map.setDraggable(false);
+	// map.setZoomable(false);
 	
+	$(window).resize(onResize);
 	$.get('../json/city.json', onGetCity);
 }
 
