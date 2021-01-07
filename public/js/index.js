@@ -61,7 +61,7 @@ function onGetPositionError(e) {
 
 function onGetWeather(r) {
 	console.log(r);
-	console.log(r.weather[0].icon);
+	updateWeather(r);
 	updateBg(r.weather[0].icon);
 }
 
@@ -123,9 +123,9 @@ function onCreateMarker(r) {
 			spaceBetween: 10,
 			loop: true,
 			navigation: {
-        nextEl: '.city-wrap .bt-next',
-        prevEl: '.city-wrap .bt-prev',
-      },
+				nextEl: '.city-wrap .bt-next',
+				prevEl: '.city-wrap .bt-prev',
+			},
 			breakpoints: {
 				576: { slidesPerView: 3 },
 				768: { slidesPerView: 4 },
@@ -137,6 +137,10 @@ function onCreateMarker(r) {
 
 
 /****************** 사용자함수 *******************/
+
+function updateWeather(r) {
+	
+}
 
 function getWeather(lat, lon) {
 	params.id = '';
@@ -150,9 +154,11 @@ function mapInit() {
 		center: new kakao.maps.LatLng(35.8, 127.7),
 		level: 13,
 		draggable: false,
-		zoomable: false
+		zoomable: false,
+		disableDoubleClick: true
 	};
 	map = new kakao.maps.Map($('#map')[0], mapOption);
+	map.addOverlayMapTypeId(kakao.maps.MapTypeId.TERRAIN);
 	// map.setDraggable(false);
 	// map.setZoomable(false);
 	
