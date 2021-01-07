@@ -90,7 +90,7 @@ function onCreateMarker(r) {
 		return v.id === r.id;
 	});
 	var content = '';
-	content += '<div class="popper '+city[0].class+'" onclick="">';
+	content += '<div class="popper '+city[0].class+'" onclick="getWeather('+city[0].id+');">';
 	content += '<div class="img-wrap">';
 	content += '<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
 	content += '</div>';
@@ -107,7 +107,7 @@ function onCreateMarker(r) {
 	});
 	customOverlay.setMap(map);
 
-	content  = '<div class="city swiper-slide">';
+	content  = '<div class="city swiper-slide" onclick="getWeather('+city[0].id+');">';
 	content += '<div class="name">'+city[0].name+'</div>';
 	content += '<div class="content">';
 	content += '<div class="img-wrap">';
@@ -157,10 +157,17 @@ function updateDaily(r) {
 	$infoWrap.find(".date .title").html(moment(r.dt*1000).format('YYYY년 M월 D일 H시 m분')+' 기준');
 }
 
-function getWeather(lat, lon) {
-	params.id = '';
-	params.lat = lat;
-	params.lon = lon;
+function getWeather(param, param2) {
+	if(param && param2) {
+		params.id = '';
+		params.lat = param;
+		params.lon = param2;
+	}
+	else {
+		params.id = param;
+		params.lat = '';
+		params.lon = '';
+	}
 	$.get(weatherUrl, params, onGetWeather);
 }
 

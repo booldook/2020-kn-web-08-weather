@@ -19,7 +19,7 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .cont-wrapper > .city-wrap {display: none;} 
 .cont-wrapper > .weather-wrap {flex: 100% 0 1; margin-left: 5%; }
 
-.popper {display: flex; align-items: center; padding-right: 3px;  position: absolute; background-color: rgba(9, 57, 88, 0.9); color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.75em; top: -48px; }
+.popper {display: flex; align-items: center; padding-right: 3px;  position: absolute; background-color: rgba(9, 57, 88, 0.9); color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.75em; top: -48px; cursor: pointer;}
 .popper.lt {left: 0;}
 .popper.ct {left: -30px;}
 .popper.rt {left: -60px;}
@@ -35,7 +35,7 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .city-wrap .bt-arrow {font-size: 2em; position: absolute; top: 50%; transform: translateY(-50%); z-index: 9; cursor: pointer; outline: none;}
 .city-wrap .bt-prev {left: -5px;}
 .city-wrap .bt-next {right: -5px;}
-.city-wrap .city {border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden;}
+.city-wrap .city {border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden; cursor: pointer;}
 .city-wrap .city > .name {text-align: center; padding: 8px; font-size: 1.25em; background-color: rgba(0,0,0,0.7);}
 .city-wrap .city > .content {display: flex; align-items:center; line-height: 1.2; padding: 4px 12px 0 4px; background-color: rgba(0,0,0,0.4);}
 
