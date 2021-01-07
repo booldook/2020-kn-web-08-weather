@@ -90,7 +90,7 @@ function onCreateMarker(r) {
 		return v.id === r.id;
 	});
 	var content = '';
-	content += '<div class="popper '+city[0].class+'">';
+	content += '<div class="popper '+city[0].class+'" onclick="">';
 	content += '<div class="img-wrap">';
 	content += '<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
 	content += '</div>';
