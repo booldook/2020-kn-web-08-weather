@@ -61,7 +61,7 @@ function onGetPositionError(e) {
 
 function onGetWeather(r) {
 	console.log(r);
-	updateWeather(r);
+	updateDaily(r);
 	updateBg(r.weather[0].icon);
 }
 
@@ -138,7 +138,7 @@ function onCreateMarker(r) {
 
 /****************** 사용자함수 *******************/
 
-function updateWeather(r) {
+function updateDaily(r) {
 	var $city = $(".daily-container .city");
 	var $imgWrap = $(".daily-container .img-wrap");
 	var $tempWrap = $(".daily-container .temp-wrap");
