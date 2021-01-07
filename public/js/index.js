@@ -154,6 +154,7 @@ function updateDaily(r) {
 	$infoWrap.find(".temp .info").eq(1).html(r.main.temp_min+'˚');
 	$infoWrap.find(".wind .arrow").css('transform', 'rotate('+r.wind.deg+'deg)');
 	$infoWrap.find(".wind .info").html(r.wind.speed+'㎧');
+	$infoWrap.find(".date .title").html(moment(r.dt*1000).format('YYYY년 M월 D일 H시 m분')+' 기준');
 }
 
 function getWeather(lat, lon) {
