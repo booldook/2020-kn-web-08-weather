@@ -40,7 +40,7 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .city-wrap .city > .content {display: flex; align-items:center; line-height: 1.2; padding: 4px 12px 0 4px; background-color: rgba(0,0,0,0.4);}
 
 .daily-container {background-color: rgba(0,0,0,0.6); border-radius: 8px; padding: 1.5em;}
-.daily-container .city {text-align: center; margin-bottom: 0.5em;}
+.daily-container .city {text-align: center; margin-bottom: 0.75em;}
 .daily-container .info-wrapper {display: flex; align-items: center;}
 .daily-container .info-wrapper .temp-wrap {margin: 0 2em 0 1em; text-align: center;}
 .daily-container .info-wrapper .temp-wrap h3 {font-size: 3em; line-height: 1;}

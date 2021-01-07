@@ -139,7 +139,20 @@ function onCreateMarker(r) {
 /****************** 사용자함수 *******************/
 
 function updateWeather(r) {
-	
+	var $city = $(".daily-container .city");
+	var $imgWrap = $(".daily-container .img-wrap");
+	var $tempWrap = $(".daily-container .temp-wrap");
+	var $infoWrap = $(".daily-container .info-wrap");
+	var src = 'http://openweathermap.org/img/wn/'+r.weather[0].icon+'@2x.png';
+	$city.html(r.name + ', ' + r.sys.country);
+	$imgWrap.find("img").attr('src', src); // $("img", $imgWrap).attr('src', src);
+	$tempWrap.find("h3").html(r.main.temp+'˚');
+	$tempWrap.find("div").html('(체감 '+r.main.feels_like+'˚)');
+	$infoWrap.find("h3").html(r.weather[0].main+' <small>('+r.weather[0].description+')</small>');
+	$infoWrap.find(".temp .info").eq(0).html(r.main.temp_max+'˚');
+	$infoWrap.find(".temp .info").eq(1).html(r.main.temp_min+'˚');
+	$infoWrap.find(".wind .arrow").css('transform', 'rotate('+r.wind.deg+'deg)');
+	$infoWrap.find(".wind .info").html(r.wind.speed+'㎧');
 }
 
 function getWeather(lat, lon) {
