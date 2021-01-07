@@ -1,3 +1,4 @@
+
 // function a(arg, arg2) {}
 // arguments, parameters, 인자, 매개변수 ...
 
