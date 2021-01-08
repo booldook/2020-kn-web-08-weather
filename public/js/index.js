@@ -111,24 +111,26 @@ function onCreateMarker(r) {
 	customOverlay.setMap(map);
 
 	content  = '<div class="city swiper-slide" onclick="getWeather('+city[0].id+');">';
-	content += '<div class="name">'+city[0].name+'</div>';
-	content += '<div class="content">';
-	content += '<div class="img-wrap">';
-	content += '<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
+	content += '	<div class="name">'+city[0].name+'</div>';
+	content += '	<div class="content">';
+	content += '		<div class="img-wrap">';
+	content += '			<img src="http://openweathermap.org/img/wn/'+r.weather[0].icon+'.png" class="mw-100">';
+	content += '		</div>';
+	content += '		<div class="cont-wrap">';
+	content += '			<div class="temp">온도&nbsp;&nbsp; '+r.main.temp+'도</div>';
+	content += '			<div class="temp">체감&nbsp;&nbsp; '+r.main.feels_like+'도</div>';
+	content += '		</div>';
+	content += '	</div>';
 	content += '</div>';
-	content += '<div class="cont-wrap">';
-	content += '<div class="temp">온도&nbsp;&nbsp; '+r.main.temp+'도</div>';
-	content += '<div class="temp">체감&nbsp;&nbsp; '+r.main.feels_like+'도</div>';
-	content += '</div></div></div>';
 	$('.city-wrap .swiper-wrapper').append(content);
 	if(cityCnt == cities.length) {
-		var swiper = new Swiper('.city-wrap .swiper-container', {
+		var swiper = new Swiper('.city-wrap > .swiper-container', {
 			slidesPerView: 2,
 			spaceBetween: 10,
 			loop: true,
 			navigation: {
-				nextEl: '.city-wrap .bt-next',
-				prevEl: '.city-wrap .bt-prev',
+				nextEl: '.city-wrap > .bt-next',
+				prevEl: '.city-wrap > .bt-prev',
 			},
 			breakpoints: {
 				576: { slidesPerView: 3 },
@@ -143,6 +145,20 @@ function onGetWeekly(r) {
 }
 
 /****************** 사용자함수 *******************/
+
+var swiper = new Swiper('.hourly-container > .swiper-container', {
+	slidesPerView: 2,
+	spaceBetween: 10,
+	navigation: {
+		nextEl: '.hourly-container > .bt-next',
+		prevEl: '.hourly-container > .bt-prev',
+	},
+	breakpoints: {
+		576: { slidesPerView: 4 },
+		768: { slidesPerView: 6 },
+	}
+});
+
 
 function updateDaily(r) {
 	var $city = $(".daily-container .city");

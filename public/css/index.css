@@ -18,9 +18,9 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 
 /******** 날씨 *********/
 .cont-wrapper {display: flex; justify-content: space-between;}
-.cont-wrapper > .map-wrap {flex: 400px 0 0; height: 600px; border-radius: 8px;}
+.cont-wrapper > .map-wrap {width: 400px; flex: 0 0 400px; height: 600px; border-radius: 8px;}
 .cont-wrapper > .city-wrap {display: none;} 
-.cont-wrapper > .weather-wrap {flex: 100% 0 1; margin-left: 5%; }
+.cont-wrapper > .weather-wrap {width: calc(95% - 400px); flex: 0 1 100%; margin-left: 5%;}
 
 .popper {display: flex; align-items: center; padding-right: 3px;  position: absolute; background-color: rgba(9, 57, 88, 0.9); color: #f9f9f9; border-radius: 4px; text-align: center; font-weight: lighter; font-size: 0.75em; top: -48px; cursor: pointer;}
 .popper.lt {left: 0;}
@@ -50,6 +50,10 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .daily-container .info-wrapper .info-wrap .info {font-size: 1.25em;}
 .daily-container .info-wrapper .info-wrap .divide {margin: 0 0.5em;}
 
+.hourly-container {width: 100%; position: relative; padding: 0 3%; margin-top: 1em; text-align: center;}
+.hourly-container .swiper-container {width: 100%;}
+.hourly-container .swiper-wrapper {width: 100%;}
+.hourly-container .swiper-slide {}
 
 			
 		
@@ -67,8 +71,9 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 	.cont-wrapper {flex-wrap: wrap;}
 	.cont-wrapper > .map-wrap {display: none;}
 	.cont-wrapper > .city-wrap {flex: 100% 0 0; display: block;} 
-	.cont-wrapper > .weather-wrap {margin-left: 0; flex: 100% 0 0;}
-	.weather-wrap {margin-top: 2em; padding: 0 3%;}
+	.cont-wrapper > .weather-wrap {margin-left: 0; flex: 100% 0 0; max-width: 100%;}
+	.weather-wrap {margin-top: 2em;}
+	.daily-container {margin: 0 3%;}
 }
 
 @media screen and (max-width: 767px) {
