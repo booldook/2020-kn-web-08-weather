@@ -43,6 +43,7 @@ var params = {
 
 
 /****************** 이벤트등록 *******************/
+moment.locale('ko'); 
 navigator.geolocation.getCurrentPosition(onGetPosition, onGetPositionError);
 mapInit();
 
@@ -176,16 +177,17 @@ function onGetWeekly(r) {
 
 
 	// Weekly
-	for(var i in r.daily) {
-		html  = '<div class="swiper-slide">';
+	for(var i=1; i<r.daily.length; i++) {
+		html  = '<div class="">';
 		html += '	<div class="yoil">'+moment(r.daily[i].dt*1000).format('dddd')+'</div>';
 		html += '	<div class="icon"><img src="http://openweathermap.org/img/wn/'+r.daily[i].weather[0].icon+'.png" alt="icon" class="mw-100"></div>';
 		html += '	<div class="desc">'+r.daily[i].weather[0].main+'('+r.daily[i].weather[0].description+')</div>';
 		html += '	<div class="max">'+r.daily[i].temp.max+'˚</div>';
 		html += '	<div class="min">'+r.daily[i].temp.min+'˚</div>';
 		html += '</div>';
-		$('.weekly-container .swiper-wrapper').append(html);
+		$('.weekly-container').append(html);
 	}
+	/*
 	var swiper = new Swiper('.weekly-container.swiper-container', {
 		slidesPerView: 1,
 		direction: 'vertical',
@@ -194,6 +196,7 @@ function onGetWeekly(r) {
 			768: { slidesPerView: 3 },
 		}
 	});
+	*/
 }
 
 /****************** 사용자함수 *******************/

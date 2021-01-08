@@ -55,16 +55,14 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 
 .hourly-container {width: 100%; position: relative; padding: 0 3%; margin-top: 2em; text-align: center;}
 
-.weekly-container {margin-top: 2em; border-top: 1px solid rgba(255,255,255,0.3); padding: 1em; width: 100%;}
-.weekly-container .swiper-slide {display: flex; align-items: center; }
-.weekly-container .swiper-slide > div {}
-.weekly-container .swiper-slide > .yoil {min-width: 150px;}
-.weekly-container .swiper-slide > .icon {margin-right: 2em;}
-.weekly-container .swiper-slide > .desc {margin-right: auto;}
-.weekly-container .swiper-slide > .min {min-width: 80px; text-align: right;}
-.weekly-container .swiper-slide > .max {min-width: 80px; text-align: right;}
-.weekly-container .yoil {font-size: 1.25em;}
-.weekly-container .min {color: rgba(255,255,255,0.7)}
+.weekly-container {margin-top: 2em; border-top: 1px solid rgba(255,255,255,0.3); padding: 1em; width: 100%; overflow-y: auto; overflow-x: hidden;}
+
+.weekly-container > div {display: flex; align-items: center;}
+.weekly-container .yoil {min-width: 150px; font-size: 1.25em;}
+.weekly-container .icon {margin-right: 2em;}
+.weekly-container .desc {margin-right: auto;}
+.weekly-container .min {min-width: 80px; text-align: right; color: rgba(255,255,255,0.7)}
+.weekly-container .max {min-width: 80px; text-align: right;}
 
 
 			
@@ -89,8 +87,8 @@ html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 }
 
 @media screen and (max-width: 767px) {
-	.weekly-container .swiper-slide > .icon {margin-right: auto;}
-	.weekly-container .swiper-slide > .desc {display: none;}
+	.weekly-container .icon {margin-right: auto;}
+	.weekly-container .desc {display: none;}
 }
 
 @media screen and (max-width: 575px) {
