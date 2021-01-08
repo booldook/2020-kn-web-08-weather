@@ -4,7 +4,7 @@
 html, body {font-family: 'Sunflower', sans-serif; line-height: 1;}
 .wrapper {max-width: 1200px; margin: auto;}
 
-.bt-arrow {font-size: 2em; position: absolute; top: 50%; transform: translateY(-50%); z-index: 9; cursor: pointer; outline: none;}
+.bt-arrow {font-size: 2em; position: absolute; top: 50%; transform: translateY(-50%); z-index: 9; cursor: pointer; outline: none; opacity: .4;}
 .bt-prev {left: -5px;}
 .bt-next {right: -5px;}
 

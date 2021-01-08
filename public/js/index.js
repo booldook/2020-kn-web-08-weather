@@ -140,24 +140,41 @@ function onCreateMarker(r) {
 	}
 }
 
+// format(	 'YYYY-MM-DD hh:mm:ss '		) 01시
+// format(	 'YYYY-MM-DD HH:mm:ss '		) 13시
+// (i == 0) ? '지금' : moment(r.hourly[i].dt*1000).format('H')+'시('+moment(r.hourly[i].dt*1000).format('D')+'일)'
+
 function onGetWeekly(r) {
 	console.log(r);
+	var html;
+	for(var i in r.hourly) {
+		html  = '<div class="swiper-slide">';
+		html += '	<div class="time-wrap">'+((i == 0) ? '현재' : moment(r.hourly[i].dt*1000).format('H')+'시('+moment(r.hourly[i].dt*1000).format('D')+'일)')+'</div>';
+		html += '	<div class="img-wrap">';
+		html += '		<img src="http://openweathermap.org/img/wn/'+r.hourly[i].weather[0].icon+'.png" class="mw-100">';
+		html += '	</div>';
+		html += '	<div class="temp-wrap">'+r.hourly[i].temp+'도</div>';
+		html += '</div>';
+		$('.hourly-container .swiper-wrapper').append(html);
+	}
+	var swiper = new Swiper('.hourly-container > .swiper-container', {
+		slidesPerView: 2,
+		spaceBetween: 10,
+		navigation: {
+			nextEl: '.hourly-container > .bt-next',
+			prevEl: '.hourly-container > .bt-prev',
+		},
+		breakpoints: {
+			576: { slidesPerView: 4 },
+			768: { slidesPerView: 6 },
+		}
+	});
 }
 
 /****************** 사용자함수 *******************/
 
-var swiper = new Swiper('.hourly-container > .swiper-container', {
-	slidesPerView: 2,
-	spaceBetween: 10,
-	navigation: {
-		nextEl: '.hourly-container > .bt-next',
-		prevEl: '.hourly-container > .bt-prev',
-	},
-	breakpoints: {
-		576: { slidesPerView: 4 },
-		768: { slidesPerView: 6 },
-	}
-});
+/* 
+ */
 
 
 function updateDaily(r) {
